@@ -41,9 +41,7 @@ Replaced Naive RAG baselines with **sentence-window retrieval** and **auto-mergi
 | **Groundedness** | 70% | **88%** | +18%
 
  |
-| **Answer Relevance** | 72% | **90%** | +18%
-
- |
+| **Answer Relevance** | 72% | **90%** | +18%|
 
 * **RLHF Alignment:** Integrated Reinforcement Learning from Human Feedback, reaching **~89% accuracy** while evaluating trade-offs from binary reward constraints.
 
@@ -75,6 +73,9 @@ Lexical frequency profiling highlights key political entities driving TF-IDF fea
 ### VADER Sentiment Profiling
 
 Sentiment analysis revealed strong **bimodal polarization** in fake news articles, with compound scores clustering heavily at extreme negative (`-1.0`) and extreme positive (`+1.0`) values.
+<img width="1007" height="482" alt="image" src="https://github.com/user-attachments/assets/27932610-b62b-4910-8d78-218dd2e8404f" />
+<img width="990" height="581" alt="image" src="https://github.com/user-attachments/assets/f9ed0dab-be47-43d4-b210-c607a5098321" />
+<img width="997" height="572" alt="image" src="https://github.com/user-attachments/assets/3d88e995-0a7f-4772-84ce-9ce3c78a8530" />
 
 ---
 
