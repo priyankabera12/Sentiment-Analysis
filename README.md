@@ -65,7 +65,7 @@ Constructed an end-to-end detection pipeline using 23,481 clean news articles (`
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)
+## 4. Exploratory Data Analysis (EDA)
 
 ### Topic & Term Frequency Analysis
 
@@ -82,7 +82,7 @@ Sentiment analysis revealed strong **bimodal polarization** in fake news article
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+## 5. Tech Stack & Dependencies
 
 * **Core Language:** Python
 
