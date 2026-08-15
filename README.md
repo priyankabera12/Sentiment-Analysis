@@ -8,10 +8,12 @@ An end-to-end Natural Language Processing (NLP) framework featuring sentiment an
 
 Developed by **Priyanka Bera** (Feb 2026 – Jul 2026) within the Department of Natural Language Processing & Machine Learning, this project systematically addresses data scarcity in sentiment classification, optimizes context accuracy in retrieval systems, and detects adversarial misinformation at scale.
 
-## Background & Core ObjectivesData Scarcity vs. Fine-Tuning Efficiency: Explored how zero-shot, few-shot, and supervised fine-tuning scale across varying dataset sizes. The study highlights the pitfalls of extreme data scarcity (where few-shot models suffer severe overfitting) and establishes empirical data thresholds required to achieve high-accuracy sentiment classification on noisy social media text.  
-## Next-Generation Retrieval Architectures: Addressed the structural limitations of Naive RAG baselines—such as context fragmenting and lost document boundaries—by implementing Advanced RAG techniques (sentence-window retrieval and auto-merging). The system was further aligned using Reinforcement Learning from Human Feedback (RLHF) to evaluate optimization stability and reward function trade-offs. 
-## Adversarial Fake News Detection: Designed an end-to-end pipeline to analyze and classify deceptive content within a 23,481-article corpus (fake.csv). By combining VADER sentiment profiling (which uncovered extreme bimodal polarization in fake news), FAISS-backed dense semantic retrieval (all-MiniLM-L6-v2), and TF-IDF linear classification (PassiveAggressive Classifier), the framework achieves high-precision detection on unseen holdout data.  
----
+**##  Background & Core ObjectivesData Scarcity vs. Fine-Tuning Efficiency: Explored how zero-shot, few-shot, and supervised fine-tuning scale across varying dataset sizes. The study highlights the pitfalls of extreme data scarcity (where few-shot models suffer severe overfitting) and establishes empirical data thresholds required to achieve high-accuracy sentiment classification on noisy social media text. 
+
+**##  Next-Generation Retrieval Architectures: Addressed the structural limitations of Naive RAG baselines—such as context fragmenting and lost document boundaries—by implementing Advanced RAG techniques (sentence-window retrieval and auto-merging). The system was further aligned using Reinforcement Learning from Human Feedback (RLHF) to evaluate optimization stability and reward function trade-offs. 
+
+**## Adversarial Fake News Detection: Designed an end-to-end pipeline to analyze and classify deceptive content within a 23,481-article corpus (fake.csv). By combining VADER sentiment profiling (which uncovered extreme bimodal polarization in fake news), FAISS-backed dense semantic retrieval (all-MiniLM-L6-v2), and TF-IDF linear classification (PassiveAggressive Classifier), the framework achieves high-precision detection on unseen holdout data. 
+____________________________________________________________________________________________________________________________________________________________________
 
 ## 🚀 Key Modules & Performance Benchmarks
 
@@ -27,8 +29,6 @@ Developed by **Priyanka Bera** (Feb 2026 – Jul 2026) within the Department of 
 
 
 * **Supervised Fine-Tuning:** Expanded training data on an 80-20 train-test split, elevating classification accuracy to **87%** with 500 samples and **91%** with 2,000 samples.
-
-
 
 ---
 
