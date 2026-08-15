@@ -18,7 +18,43 @@ Developed by **Priyanka Bera** (Feb 2026 – Jul 2026), this project systematica
 
 
 * Applied supervised fine-tuning to elevate classification accuracy from a ~35% baseline up to **91%** across 2,000 samples.
+# Comparative Sentiment Analysis, Advanced RAG, and Adversarial Fake Data Detection System
 
+An end-to-end Natural Language Processing (NLP) framework featuring sentiment analysis benchmarking, an Advanced Retrieval-Augmented Generation (RAG) system with RLHF alignment, and an adversarial fake news detection pipeline.
+
+---
+
+## 📌 Project Overview
+Developed by **Priyanka Bera** (Feb 2026 – Jul 2026) within the Department of Natural Language Processing & Machine Learning, this project systematically addresses data scarcity in sentiment classification, optimizes context accuracy in retrieval systems, and detects adversarial misinformation at scale.
+
+---
+
+## 🚀 Key Modules & Performance Benchmarks
+
+### 1. Sentiment Analysis Optimization
+* Benchmarked zero-shot **BART** (`facebook/bart-large-mnli`) against minimal-sample few-shot **DistilBERT** models.
+* **Zero-Shot Baseline:** BART achieved ~35% accuracy (F1-score: 0.38).
+* **Few-Shot Overfitting:** DistilBERT trained on 16 samples yielded 10% accuracy due to severe data scarcity.
+* **Supervised Fine-Tuning:** Expanded training data on an 80-20 train-test split, elevating classification accuracy to **87%** with 500 samples and **91%** with 2,000 samples.
+
+<details>
+<summary><b>View DistilBERT Fine-Tuning Setup</b></summary>
+
+```python
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trainer, TrainingArguments
+
+model_name = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
+
+training_args = TrainingArguments(
+    output_dir="./results",
+    evaluation_strategy="epoch",
+    learning_rate=2e-5,
+    per_device_train_batch_size=16,
+    num_train_epochs=3,
+    weight_decay=0.01,
+)
 
 
 ### 2. Advanced RAG System & RLHF
