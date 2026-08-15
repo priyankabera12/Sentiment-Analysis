@@ -1,28 +1,3 @@
-# Sentiment-Analysis
-An end-to-end Natural Language Processing (NLP) framework implementing sentiment analysis benchmarking, an Advanced Retrieval-Augmented Generation (RAG) system, and an adversarial fake news detection pipeline.
-
-
-# Comparative Sentiment Analysis, Advanced RAG, and Adversarial Fake Data Detection System
-
-An end-to-end Natural Language Processing (NLP) framework featuring sentiment analysis benchmarking, an Advanced Retrieval-Augmented Generation (RAG) system with RLHF alignment, and an adversarial fake news detection pipeline.
-
-## 📌 Project Overview
-
-Developed by **Priyanka Bera** (Feb 2026 – Jul 2026), this project systematically addresses data scarcity in sentiment classification, improves context accuracy in retrieval systems, and detects adversarial misinformation at scale.
-
-## 🚀 Key Modules & Architecture
-
-### 1. Sentiment Analysis Optimization
-
-* Benchmarked zero-shot **BART** (`facebook/bart-large-mnli`) against minimal-sample few-shot **DistilBERT** models.
-
-
-* Applied supervised fine-tuning to elevate classification accuracy from a ~35% baseline up to **91%** across 2,000 samples.
-# Comparative Sentiment Analysis, Advanced RAG, and Adversarial Fake Data Detection System
-
-An end-to-end Natural Language Processing (NLP) framework featuring sentiment analysis benchmarking, an Advanced Retrieval-Augmented Generation (RAG) system with RLHF alignment, and an adversarial fake news detection pipeline.
-
----
 
 ## 📌 Project Overview
 Developed by **Priyanka Bera** (Feb 2026 – Jul 2026) within the Department of Natural Language Processing & Machine Learning, this project systematically addresses data scarcity in sentiment classification, optimizes context accuracy in retrieval systems, and detects adversarial misinformation at scale.
@@ -54,69 +29,39 @@ training_args = TrainingArguments(
     per_device_train_batch_size=16,
     num_train_epochs=3,
     weight_decay=0.01,
-)
+Metric,Naive RAG Baseline,Advanced RAG,Improvement
+Context Relevance,65%,82%,+17%
+Groundedness,70%,88%,+18%
+Answer Relevance,72%,90%,+18%
 
+import faiss
+from sentence_transformers import SentenceTransformer
 
-### 2. Advanced RAG System & RLHF
+embedder = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+embeddings = embedder.encode(corpus_chunks, show_progress_bar=True)
 
-* Replaced Naive RAG baselines with **sentence-window retrieval** and **auto-merging**.
+index = faiss.IndexFlatL2(embeddings.shape[1])
+index.add(embeddings)
 
+3. Adversarial Fake Data Detection System
+Constructed an end-to-end detection pipeline using 23,481 clean news articles (fake.csv).
 
-* Achieved significant performance gains across standard RAG metrics:
-* **Context Relevance:** 82% (+17% over baseline)
+Combined dense vector retrieval using FAISS indexed with all-MiniLM-L6-v2 embeddings alongside a TF-IDF PassiveAggressive Classifier.
 
+Test Performance: Achieved 96.51% classification accuracy (Weighted Precision: 0.965, Recall: 0.965, F1-Score: 0.965) on an unseen holdout set of 4,697 articles.
 
-* **Groundedness:** 88% (+18% over baseline)
+📊 Exploratory Data Analysis (EDA)
+Topic & Term Frequency Analysis
+The dataset spans multiple political and news categories, heavily concentrated in general news and politics.
 
+Lexical frequency profiling highlights key political entities driving TF-IDF feature extraction:
 
-* **Answer Relevance:** 90% (+18% over baseline)
+VADER Sentiment Profiling
+Sentiment analysis revealed strong bimodal polarization in fake news articles, with compound scores clustering heavily at extreme negative (-1.0) and extreme positive (+1.0) values.
 
+🛠️ Tech Stack & Dependencies
+Core Language: Python
 
-* Integrated Reinforcement Learning from Human Feedback (**RLHF**), reaching ~89% alignment accuracy.
+Transformers & Models: facebook/bart-large-mnli, distilbert-base-uncased, sentence-transformers (all-MiniLM-L6-v2)
 
-
-
-### 3. Adversarial Fake Data Detection
-
-* Analyzed 23,481 news articles using **VADER** sentiment analysis to reveal bimodal polarization patterns in fake news.
-
-
-* Implemented dense retrieval with **FAISS** vector search (`all-MiniLM-L6-v2` embeddings) paired with a **TF-IDF PassiveAggressive Classifier**.
-
-
-* Final Pipeline Accuracy: **96.51%** (F1-score: 0.965) on a 4,697-article holdout test set.
-<img width="1007" height="482" alt="image" src="https://github.com/user-attachments/assets/0c6492db-7b99-412a-9ff4-41e2fb87a2e0" />
-
-<img width="990" height="581" alt="image" src="https://github.com/user-attachments/assets/935b1338-2c79-48d9-aab2-07f6830d6465" />
-
-<img width="997" height="572" alt="image" src="https://github.com/user-attachments/assets/a3e3661d-098b-4da4-870e-339b0596826c" />
-
-## 🛠️ Tech Stack & Dependencies
-
-* **NLP & Embeddings:** Hugging Face Transformers (`bart-large-mnli`, `distilbert-base-uncased`), `sentence-transformers` (`all-MiniLM-L6-v2`), VADER
-
-
-* **Vector Search & ML:** FAISS, Scikit-learn (TF-IDF, PassiveAggressive Classifier)
-
-
-* **Core Language:** Python
-
-## 🛠️ Tech Stack & Dependencies
-
-* **NLP & Embeddings:** Hugging Face Transformers (`bart-large-mnli`, `distilbert-base-uncased`), `sentence-transformers` (`all-MiniLM-L6-v2`), VADER
-
-
-* **Vector Search & ML:** FAISS, Scikit-learn (TF-IDF, PassiveAggressive Classifier)
-
-
-* **Core Language:** Python
-
-## 🛠️ Tech Stack & Dependencies
-
-* **NLP & Embeddings:** Hugging Face Transformers (`bart-large-mnli`, `distilbert-base-uncased`), `sentence-transformers` (`all-MiniLM-L6-v2`), VADER
-
-
-* **Vector Search & ML:** FAISS, Scikit-learn (TF-IDF, PassiveAggressive Classifier)
-
-
-* **Core Language:** Python
+Vector Search & ML: FAISS, Scikit-learn (TF-IDF, PassiveAggressive Classifier), VADER
